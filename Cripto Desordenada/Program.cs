@@ -7,8 +7,8 @@ namespace Cripto_Desordenada
   {
     static void Main(string[] args)
     {
-      var codigo = Desordenamento.ToCode("othon", 1);
-      var decr = Desordenamento.ToUnCode(codigo, 1);
+      var codigo = Desordenamento.ToCode("othon", TecnicasDesordenamento.QuebradoAoMeio);
+      var decr = Desordenamento.ToUnCode(codigo, TecnicasDesordenamento.QuebradoAoMeio);
 
       Console.WriteLine(codigo);
       Console.WriteLine(decr);

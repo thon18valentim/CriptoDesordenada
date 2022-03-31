@@ -96,11 +96,11 @@ namespace Cripto
             {'Z','M'}
         };
 
-    private static char? SearchLetter(char code, int tecEnum)
+    private static char? SearchLetter(char code, TecnicasDesordenamento tec)
     {
-      switch (tecEnum)
+      switch (tec)
       {
-        case 1:
+        case TecnicasDesordenamento.QuebradoAoMeio:
           foreach (KeyValuePair<char, char> item in QuebradoAoMeio)
           {
             if (item.Value == code)
@@ -109,7 +109,7 @@ namespace Cripto
             }
           }
           break;
-        case 2:
+        case TecnicasDesordenamento.DoisVizinhos:
           foreach (KeyValuePair<char, char> item in DoisVizinhos)
           {
             if (item.Value == code)
@@ -118,7 +118,7 @@ namespace Cripto
             }
           }
           break;
-        case 3:
+        case TecnicasDesordenamento.SeqTeclado:
           foreach (KeyValuePair<char, char> item in SeqTeclado)
           {
             if (item.Value == code)
@@ -132,11 +132,11 @@ namespace Cripto
       return null;
     }
 
-    private static char? SearchCode(char letter, int tecEnum)
+    private static char? SearchCode(char letter, TecnicasDesordenamento tec)
     {
-      switch (tecEnum)
+      switch (tec)
       {
-        case 1:
+        case TecnicasDesordenamento.QuebradoAoMeio:
           foreach (KeyValuePair<char, char> item in QuebradoAoMeio)
           {
             if (item.Key == letter)
@@ -145,7 +145,7 @@ namespace Cripto
             }
           }
           break;
-        case 2:
+        case TecnicasDesordenamento.DoisVizinhos:
           foreach (KeyValuePair<char, char> item in DoisVizinhos)
           {
             if (item.Key == letter)
@@ -154,7 +154,7 @@ namespace Cripto
             }
           }
           break;
-        case 3:
+        case TecnicasDesordenamento.SeqTeclado:
           foreach (KeyValuePair<char, char> item in SeqTeclado)
           {
             if (item.Key == letter)
@@ -168,24 +168,24 @@ namespace Cripto
       return null;
     }
 
-    public static string ToCode(string message, int tecEnum)
+    public static string ToCode(string message, TecnicasDesordenamento tec)
     {
       var newCode = "";
 
       foreach (char letter in message.Replace(" ", "").ToUpper())
       {
-        newCode += SearchCode(letter, tecEnum);
+        newCode += SearchCode(letter, tec);
       }
 
       return newCode;
     }
 
-    public static string ToUnCode(string code, int tecEnum)
+    public static string ToUnCode(string code, TecnicasDesordenamento tec)
     {
       var newCode = "";
       foreach (char cd in code.Replace(" ", "").ToUpper())
       {
-        newCode += SearchLetter(cd, tecEnum);
+        newCode += SearchLetter(cd, tec);
       }
 
       return newCode;
